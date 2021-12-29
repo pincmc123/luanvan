@@ -30,7 +30,7 @@
                                             <select name="status" id="select" class="form-control">
                                                 <option value="0">Please select</option>
                                                 <option  @if($data->status == 'Enable') checked @endif value="Enable">Enable</option>
-                                                <option  @if($data->status == 'Disanable') checked @endif value="Disanable">Disanable</option>
+                                                <option  @if($data->status == 'Disable') checked @endif value="Disable">Disable</option>
                                             </select>
                                         </div>
                                     </div>

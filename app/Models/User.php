@@ -40,6 +40,7 @@ class User extends Authenticatable
         $user->name=$data->name;
         $user->gender=$data->gender;
         $user->phone=$data->phone;
+        $user->email=$data->email;
         $user->status=$data->status;
         $user->save();
         return 'True';
@@ -57,6 +58,29 @@ class User extends Authenticatable
         ]);
         return $user;
     }
+    public function destroyUser($id)
+    {
+        $user = user::find($id);
+        $user->delete();
+
+        return redirect()->away('https://www.google.com');
+    }
+    public function createCustomer($data)
+    {
+        $user = user::create([
+            'name'=>$data->uname,
+            'gender'=>$data->gender,
+            'phone'=>$data->phone,
+            'email'=>$data->email,
+            'status'=>'Enable',
+            'role'=>'user',
+            'password'=>bcrypt($data->password),
+        ]);
+        return $user;
+
+    }
+
+
 
     /**
      * The attributes that should be hidden for serialization.

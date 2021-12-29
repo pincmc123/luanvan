@@ -41,7 +41,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = $this->user->createUser($request);
-        return view('Admin.EditUser', ['data' => $user])->with('success', 'You added new items, follow next step!');
+
+        return view('Admin.EditUser', ['data' => $user])->with('success', 'Thêm thành công tài khoản');
     }
 
     /**
@@ -78,6 +79,29 @@ class UserController extends Controller
         $this->user->updateUser($request, $id);
         return redirect()->back();
     }
+    public function showregistercustomer()
+    {
+        return view('Admin.Register');
+    }
+    public function registercustomer(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password'=> 'required',
+            'phone'=>'required'
+        ],
+            [
+                'name.required'=> 'Email không được để trống',
+                'email.required'=> 'Tên không được để trống', // custom message
+                'phone.required'=> 'số điện thoại không được để trống',
+                'password.required'=>'Password không được để trống'
+            ]
+        );
+        $user = $this->user->createCustomer($request);
+
+        return view('Admin.Login', ['data' => $user])->with('success', 'Bạn tạo tài khoản thành công');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -87,6 +111,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-
+        $this->user->destroyUser($id);
+        return view('Admin.user')->with('success','Xóa thành công');
     }
 }

@@ -73,28 +73,18 @@
                                         <table class="table">
                                             <thead>
                                             <tr>
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
+
                                                 <td>name</td>
                                                 <td>role</td>
-                                                <td>type</td>
                                                 <td>status</td>
+                                                <td>Gender</td>
                                                 <td></td>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($data as $user)
                                                 <tr>
-                                                    <td>
-                                                        <label class="au-checkbox">
-                                                            <input type="checkbox">
-                                                            <span class="au-checkmark"></span>
-                                                        </label>
-                                                    </td>
+
                                                     <td>
                                                         <div class="table-data__info">
                                                             <h6>{{$user->name}}</h6>
@@ -114,18 +104,13 @@
                                                     </td>
 
                                                     <td>
-                                                        <span class="status--process">{{$product->status}}</span>
+                                                        <span class="status--process">{{$user->status}}</span>
                                                     </td>
 
                                                     <td>
-                                                        <div class="rs-select2--trans rs-select2--sm">
-                                                            <select class="js-select2" name="property">
-                                                                <option selected="selected">Full Control</option>
-                                                                <option value="">Post</option>
-                                                                <option value="">Watch</option>
-                                                            </select>
-                                                            <div class="dropDownSelect2"></div>
-                                                        </div>
+                                                       <div class="table-data__info">
+                                                           {{$user->gender}}
+                                                       </div>
 
                                                     </td>
                                                     <td>
@@ -137,10 +122,10 @@
                                                                title="Edit">
                                                                 <i class="zmdi zmdi-edit"></i>
                                                             </a>
-                                                            <button class="item" data-toggle="tooltip"
+                                                            <a type="button" href="{{url('admin/user/'.$user->id.'/delete')}}" class="item" data-toggle="tooltip"
                                                                     data-placement="top" title="Delete">
                                                                 <i class="zmdi zmdi-delete"></i>
-                                                            </button>
+                                                            </a>
 
                                                         </div>
 

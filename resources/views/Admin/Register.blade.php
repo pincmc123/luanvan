@@ -44,16 +44,27 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
+                                <img src="{{asset('/CoolAdmin-master/images/icon/logo.png')}}" alt="CoolAdmin">
                             </a>
                         </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger" style="z-index:2;   position: fixed;
+  right: 50px;
+  bottom: 50px;">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="login-form">
-                            <form action="{{route('login')}}" method="post">
+                            <form action="{{route('register')}}" method="post">
                                 @csrf
 
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
+                                    <input class="au-input au-input--full" type="text" name="name" placeholder="Username">
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address</label>
@@ -71,12 +82,12 @@
                                                     <div class="form-check">
                                                         <div class="radio">
                                                             <label for="radio1" class="form-check-label ">
-                                                                <input type="radio" id="radio1" name="radios" value="option1" class="form-check-input">Male
+                                                                <input type="radio" id="radio1" name="gender" value="Male" class="form-check-input">Male
                                                             </label>
                                                         </div>
                                                         <div class="radio">
                                                             <label for="radio2" class="form-check-label ">
-                                                                <input type="radio" id="radio2" name="radios" value="option2" class="form-check-input">Female
+                                                                <input type="radio" id="radio2" name="gender" value="Female" class="form-check-input">Female
                                                             </label>
                                                         </div>
                                                     </div>

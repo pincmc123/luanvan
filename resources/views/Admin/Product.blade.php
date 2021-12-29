@@ -56,6 +56,7 @@
                                         </label>
                                     </th>
                                     <th>ID</th>
+                                    <th>Code</th>
                                     <th>name</th>
                                     <th>description</th>
                                     <th>image</th>
@@ -76,6 +77,7 @@
                                             </label>
                                         </td>
                                         <td>{{$product->id}}</td>
+                                        <td>{{$product->code}}</td>
                                         <td class="desc">{{$product->name}}</td>
                                         <td>{{$product->description}}</td>
                                         <td>
@@ -84,19 +86,24 @@
                                         <td>
                                             <span class="status--process">{{$product->status}}</span>
                                         </td>
-                                        <td>{{$product->price}}</td>
-                                        <td></td>
+                                        <td>{{number_format($product->price)}} VNĐ</td>
+                                        <td>{{$product->id_catalog}}</td>
+
                                         <td>
                                             <div class="table-data-feature">
 
-                                                <button class="item" data-toggle="tooltip" data-placement="top"
-                                                        title="Edit">
+                                                <a type="button"
+                                                   href="{{url('admin/product/'.$product->id.'/edit')}}"
+                                                   class="item" data-toggle="tooltip" data-placement="top"
+                                                   title="Edit">
                                                     <i class="zmdi zmdi-edit"></i>
-                                                </button>
-                                                <button class="item" data-toggle="tooltip" data-placement="top"
+                                                </a>
+                                                <form action="{{url('admin/product/'.$product->id) }}" method="post" class="item" data-toggle="tooltip" data-placement="top"
                                                         title="Delete">
-                                                    <i class="zmdi zmdi-delete"></i>
-                                                </button>
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit"><i class="zmdi zmdi-delete"></i></button>n
+                                                </form>
 
                                             </div>
                                         </td>

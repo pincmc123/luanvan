@@ -9,7 +9,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong>ADD USER</strong>
+                                <strong>EDIT PRODUCT</strong>
                             </div>
                             <div class="card-body card-block">
                                 <form action="{{route('product.update',['product'=>$data->id])}}" method="post"
@@ -27,10 +27,19 @@
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
+                                            <label for="text-input" class=" form-control-label">code</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" id="text-input" name="code" class="form-control"
+                                                   value="{{$data->code}}">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
                                             <label for="email-input" class=" form-control-label">description</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="email" id="email-input" name="description" class="form-control"
+                                            <input type="text" id="text-input" name="description" class="form-control"
                                                    value="{{$data->description}}">
                                         </div>
                                     </div>
@@ -68,11 +77,6 @@
                                                         @endif value="Disanable">Disanable
                                                 </option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class=" form-control-label">Gender</label>
                                         </div>
                                     </div>
                                     <div class="card-footer">

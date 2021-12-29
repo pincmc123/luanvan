@@ -36,7 +36,6 @@
 </head>
 
 <body class="animsition">
-@include('flash-message')
 
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
@@ -140,13 +139,73 @@
                 </div>
             </nav>
         </header>
-        <!-- END HEADER MOBILE-->
 
+
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block" style="z-index:2;   position: fixed;
+  right: 50px;
+  bottom: 50px;">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+
+
+        @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-block" style="z-index:2;   position: fixed;  right: 50px;  bottom: 50px;">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <strong>{{ $message }}</strong>
+
+            </div>
+
+        @endif
+
+
+        @if ($message = Session::get('warning'))
+            <div class="alert alert-warning alert-block" style="z-index:2;   position: fixed;
+  right: 50px;
+  bottom: 50px;">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <strong>{{ $message }}</strong>
+
+            </div>
+
+        @endif
+
+
+        @if ($message = Session::get('info'))
+            <div class="alert alert-info alert-block" style="z-index:2;   position: fixed;
+  right: 50px;
+  bottom: 50px;">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <strong>{{ $message }}</strong>
+            </div>
+
+        @endif
+        @if ($errors->any())
+            <div class="alert alert-danger" style="z-index:2;   position: fixed;
+  right: 50px;
+  bottom: 50px;">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+    @endif
+
+
+
+
+        <!-- END HEADER MOBILE-->
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="{{route('homeadmin')}}">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                    <img src="{{asset('/CoolAdmin-master/images/icon/logo.png')}}" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -414,6 +473,10 @@
             </header>
                 <!-- HEADER DESKTOP-->
                 @yield('content')
+
+
+
+
 
                 <!-- END PAGE CONTAINER-->
         </div>

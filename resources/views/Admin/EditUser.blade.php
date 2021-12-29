@@ -85,12 +85,12 @@
                                             <div class="form-check">
                                                 <div class="radio">
                                                     <label for="radio1" class="form-check-label ">
-                                                        <input type="radio" id="radio1" name="gender" @if($data->status == 'Enable') checked @endif value="Enable" class="form-check-input">Enable
+                                                        <input type="radio" id="radio1" name="status" @if($data->status == 'Enable') checked @endif value="Enable" class="form-check-input">Enable
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="radio2" class="form-check-label ">
-                                                        <input type="radio" id="radio2" name="gender" @if($data->status == 'Disable') checked @endif value="Disable" class="form-check-input">Disable
+                                                        <input type="radio" id="radio2" name="status" @if($data->status == 'Disable') checked @endif value="Disable" class="form-check-input">Disable
                                                     </label>
                                                 </div>
                                             </div>

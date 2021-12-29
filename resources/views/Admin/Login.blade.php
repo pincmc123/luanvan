@@ -43,7 +43,7 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin-master">
+                                <img src="{{asset('CoolAdmin-master/images/icon/logo.png')}}" alt="CoolAdmin-master">
                             </a>
                         </div>
                         <div class="login-form">
@@ -79,7 +79,7 @@
                             <div class="register-link">
                                 <p>
                                     Don't you have account?
-                                    <a href="#">Sign Up Here</a>
+                                    <a href="{{route('showregister')}}">Sign Up Here</a>
                                 </p>
                             </div>
                         </div>

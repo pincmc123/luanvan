@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\orderdetail;
 use Illuminate\Http\Request;
 
 class OrderdetailController extends Controller
@@ -11,9 +12,13 @@ class OrderdetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct(orderdetail $orderdetail)
+    {
+        $this->orderdetail = $orderdetail;
+    }
     public function index()
     {
-        return view('Admin.Orderdetail');
+       // return view('Admin.Orderdetail', ['data' => $this->orderdetail->getListorderdetail($id)]);
     }
 
     /**
@@ -45,7 +50,8 @@ class OrderdetailController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('Admin.Orderdetail', ['data' => $this->orderdetail->getListorderdetail($id)]);
+
     }
 
     /**

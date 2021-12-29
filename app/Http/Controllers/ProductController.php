@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\catalog;
 use App\Models\product;
+use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -28,8 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('Admin.AddProduct');
-
+        return view('Admin.AddProduct',['datas'=>catalog::get()]);
     }
 
     /**
@@ -40,9 +41,25 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product=$this->product->createProduct($request);
+        $validated = $request->validate([
+            'name' => 'required|unique:product',
+            'code' => 'required|unique:product',
+            'image'=> 'required',
+        ],
+        [
+            'name.required'=> 'Tên không được để trống', // custom message
+            'code.required'=> 'Mã không được để trống', // custom message
+            'image.required'=>'Hình ảnh không được để trống'
+        ]
+    );
+        /*if ($validated->fails())
+        {
+            return $validated->withInput()->errors();
+        }*/
+        $product = $this->product->createProduct($request);
 
-        return view('Admin.EditProduct',['data'=>$product])->with('success','Thêm sản phẩm thành công');
+
+        return redirect()->route('product.index')->with('success','Thêm sản phẩm thành công');
 
     }
 
@@ -61,7 +78,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('Admin.EditProduct', ['data' => $this->product->getProduct($id)]);
+
     }
 
     /**
@@ -73,7 +91,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->product->updateProduct($request, $id);
+        return redirect()->back();
     }
 
     /**
@@ -82,8 +101,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $this->product->destroyproduct($request);
+        return redirect()->back()->with('success','Đổi trạng thái thành công');
     }
 }

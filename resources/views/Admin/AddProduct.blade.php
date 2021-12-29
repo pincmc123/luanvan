@@ -16,10 +16,18 @@
                                     @csrf
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="text-input" class=" form-control-label">Name</label>
+                                            <label for="text-input" class=" form-control-label" >Name</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="text-input" name="name"  class="form-control">
+                                            <input type="text" id="text-input"   name="name"  class="form-control" value="{{old('name')}}">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="text-input" class=" form-control-label">Code</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" id="text-input" name="code"  class="form-control" value="{{old('code')}}">
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -27,7 +35,7 @@
                                             <label for=text-input" class=" form-control-label">description</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="text-input" name="description" class="form-control">
+                                            <input type="text" id="text-input" name="description" class="form-control" value="{{old('description')}}">
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -44,8 +52,20 @@
                                             <label for="password-input" class=" form-control-label">Price</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="text-input" name="price" class="form-control">
+                                            <input type="text" id="text-input" name="price" class="form-control" value="{{old('price')}}">
 
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="select" class=" form-control-label">Catogery</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="catalog" id="select" class="form-control">
+                                                @foreach($datas as $data)
+                                                <option value="{{$data->id}}">{{$data->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -54,7 +74,7 @@
                                         </div>
                                         <div class="col-12 col-md-9">
                                             <select name="status" id="select" class="form-control">
-                                                <option value="0">Please select</option>
+
                                                 <option value="Enable">Enable</option>
                                                 <option value="Disanable">Disanable</option>
                                             </select>

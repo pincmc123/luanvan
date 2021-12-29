@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    function __construct(Order $order)
+    {
+        $this->order = $order;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('Admin.Order');
+        return view('Admin.Order', ['data' => $this->order->getListorder()]);
     }
 
     /**
@@ -68,7 +73,9 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $this->order->updateOrder($request->property, $id);
+        return redirect()->back()->with('success','Đổi trang thái thành công');
     }
 
     /**

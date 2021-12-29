@@ -12,7 +12,7 @@
                                 <strong>ADD USER</strong>
                             </div>
                             <div class="card-body card-block">
-                                <form action="{{route('product.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data" >
+                                <form action="{{route('user.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data" >
                                     @csrf
                                     <div class="row form-group">
                                         <div class="col col-md-3">
