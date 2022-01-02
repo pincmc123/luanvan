@@ -101,9 +101,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $this->product->destroyproduct($request);
+
+        $this->product->destroyproduct($id);
         return redirect()->back()->with('success','Đổi trạng thái thành công');
     }
 }

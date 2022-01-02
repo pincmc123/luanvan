@@ -75,10 +75,13 @@ class product extends Model
     {
         return product::where('id_catalog','=',$search)->get();
     }
-    public function destroyproduct(Request $request)
+    public function destroyproduct( $id)
     {
-        $product = product::find($request->id);
-        $product->status = $request->status;
+        $product = product::find($id);
+        if($product->status == 'Disable')
+         $product->status = 'Enable';
+        else
+            $product->status='Disable';
         $product->save();
     }
 }

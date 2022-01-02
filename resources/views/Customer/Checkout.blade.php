@@ -145,14 +145,14 @@
                             <div class="checkout__input__checkbox">
                                 <label for="payment">
                                     Check Payment
-                                    <input type="checkbox" id="payment">
+                                    <input type="checkbox" id="payment" value="1">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
                             <div class="checkout__input__checkbox">
                                 <label for="paypal">
                                     Paypal
-                                    <input type="checkbox" id="paypal">
+                                    <input type="checkbox" id="vnpay" value="2">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
