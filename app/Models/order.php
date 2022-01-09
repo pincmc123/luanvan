@@ -58,7 +58,7 @@ class order extends Model
         orderdetail::createorderdetail($order);
 
 
-        return $order;
+        return order::find($order);
     }
     public  function updateOrder($data,$id)
     {

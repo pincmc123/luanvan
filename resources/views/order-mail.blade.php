@@ -7,7 +7,7 @@
     <title>Order Confirmation</title>
 </head>
 <body>
-<p>Hi {{$order->user_name}}</p>
+<p>Hi {{$order->user_name}} </p>
 <p>Bạn đã đặt hành thành công</p>
 <br>
 <table style="width: 600px;text-align: right">
@@ -17,11 +17,18 @@
         <th>Product</th>
         <th>Quantity</th>
         <th>Price</th>
+        <th>total</th>
     </tr>
     </thead>
     <tbody>
-    @foreach($order->orderItems as $item)
+
+    @foreach(\App\Models\orderdetail::where('id_order','=',$order->id)->get() as $value)
         <tr>
+            <td></td>
+            <td>{{\App\Models\product::find($value->id_product)->name}}</td>
+            <td>{{$value->quantity}}</td>
+            <td>{{$value->price}}</td>
+            <td>{{$value->amount}}</td>
 
         </tr>
     @endforeach

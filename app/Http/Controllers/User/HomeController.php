@@ -104,6 +104,7 @@ class HomeController extends Controller
 
     public function addcheckout(Request $request){
         $order = $this->order->createorder($request);
+        $this->sendOrderConfirmationMail($order);
         return redirect()->route('homeuser')->with('success','Đặt hàng thành công');
     }
     public function createPayment(Request $request)
@@ -174,7 +175,7 @@ class HomeController extends Controller
     }
     public function sendOrderConfirmationMail($order)
     {
-        Mail::to($order->email)->send(new OrderMail($order));
+        Mail::to($order->user_email)->send(new OrderMail($order));
     }
 
 }
