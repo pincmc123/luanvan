@@ -49,7 +49,7 @@
             <div class="card">
                 <div class="text-left logo p-2 px-5"> <img src="{{asset('Ogranic/img/logo.png')}}" width="50"> </div>
                 <div class="invoice p-5">
-                    <h5>Your order Confirmed!</h5> <span class="font-weight-bold d-block mt-4">Hello, Chris</span> <span>You order has been confirmed and will be shipped in next two days!</span>
+                    <h5>Your order Confirmed!</h5> <span class="font-weight-bold d-block mt-4">Hello, {{$order->user_name}}</span> <span>You order has been confirmed and will be shipped in next two days!</span>
                     <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
                         <table class="table table-borderless">
                             <tbody>
